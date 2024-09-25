@@ -1,0 +1,62 @@
+
+.product_card {
+  width: 170%; /* Adjusted to fit within the grid column */
+  height: 360px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product_card img {
+  /* display: block; */
+  margin: 0 auto;
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Button Row */
+.row_btn {
+  display: flex;
+  gap: 5px; /* Space between buttons */
+  justify-content: space-between; /* Ensure buttons are spaced evenly */
+
+  margin-top: 15px;
+}
+
+/* Styling for buttons */
+.row_btn a {
+  flex: 1; /* Make both buttons take equal space */
+  text-align: center; /* Center the text */
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #fff;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover effect for buttons */
+.row_btn a:hover {
+  transform: translateY(-2px); /* Slight lift on hover */
+}
+
+/* Special styling for Buy button */
+#btn_buy {
+  background-color: #28a745; /* Green color for the Buy button */
+}
+
+#btn_buy:hover {
+  background-color: #218838; /* Darker green on hover */
+}
+
+/* Special styling for View button */
+#btn_view {
+  background-color: #17a2b8; /* Light blue color for the View button */
+}
+
+#btn_view:hover {
+  background-color: #117a8b; /* Darker blue on hover */
+}
