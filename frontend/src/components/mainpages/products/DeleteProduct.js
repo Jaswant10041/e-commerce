@@ -8,17 +8,17 @@ export const DeleteProduct = () => {
     useEffect(() => {
         const delete_fn = async () => {
             try {
-                console.log(params)
-                const res = await axios.delete(`api/products/${params.id}`);
+                console.log(params);
+                const res = await axios.delete(`/api/products/${params.id}`);
                 console.log("deleted successfully");
-                // window.location.href = '/';
+                window.location.href = '/';
             } catch (err) {
                 alert(err);
             }
         };
         
         delete_fn();
-    }, [params.id]);  // Dependency array to only call when `params.id` changes
+    }, []);  // Dependency array to only call when `params.id` changes
 
     return <></>;
 };
