@@ -17,13 +17,13 @@ export const DataProvider=({children})=>{
             alert(err.response.data.msg);
          }
     }
-    // const firstLogin=localStorage.getItem('firstLogin');
+    const firstLogin=localStorage.getItem('firstLogin');
     useEffect(()=>{
-        const firstLogin=localStorage.getItem('firstLogin');
+        // const firstLogin=localStorage.getItem('firstLogin');
         if(firstLogin){
             refresh_token();
         }
-    },[])
+    },[firstLogin])
     const state={
         token:[token,setToken],
         ProductApi:ProductApi(),

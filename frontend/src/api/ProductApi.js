@@ -7,7 +7,7 @@ export const ProductApi = () => {
         const res=await axios.get('/api/products');
         const data=await res.data;
         setProducts(data)
-        console.log(data);
+        // console.log(data);
     }
     useEffect(()=>{
       getProducts()

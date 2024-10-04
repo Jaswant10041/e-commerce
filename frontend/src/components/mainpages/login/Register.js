@@ -6,12 +6,19 @@ export const Register = () => {
   const [user, setUser] = useState({
     name: '',
     email: '',
-    password: ''
+    password: '',
+    isAdmin:false
   });
 
   const onChangeInput = (e) => {
-    const { name, value } = e.target;
+    // console.log(e);
+    let {value}=e.target;
+    const { name} = e.target;
+    if(name==="isAdmin"){
+      value=e.target.checked;
+    }
     setUser({ ...user, [name]: value });
+    // console.log(user);
   };
 
   const registerSubmit = async (e) => {
@@ -74,7 +81,18 @@ export const Register = () => {
               />
             </div>
           </div>
-
+          <div className='text-center'>
+            <label className="inline-flex items-center">
+              IsAdmin
+              <input
+                type='checkbox'
+                name='isAdmin'
+                checked={user.isAdmin}
+                onChange={onChangeInput}
+                className="ml-2 h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+              />
+            </label>
+          </div>
           <div>
             <button
               type="submit"

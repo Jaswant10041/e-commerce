@@ -11,7 +11,8 @@ const userCtrl={
     register: async(req,res) => {
         // res.json({msg:"Test Controllers"})
         try{
-            const {name,email,password}=req.body;
+            const {name,email,password,isAdmin}=req.body;
+
             const user=await Users.findOne({email});
             if(user) return res.status(400).json({msg:"Email Already Registered"})
             if(password.length<6){
@@ -20,10 +21,11 @@ const userCtrl={
             if(name.length<1){
                 return res.status(400).json({msg:"name should be atleast one character"})
             }
+            
             //Password Encryption
             const passwordHash=await bcrypt.hash(password,10);
             const newUser=new Users({
-                name,email,password:passwordHash
+                name,email,password:passwordHash,role:isAdmin
             })
             //save to mongodb
             newUser.save()
