@@ -7,6 +7,7 @@ export const DetailProduct = () => {
     const params=useParams();
     const state=useContext(GlobalState);
     const products=state.ProductApi.products[0];
+    const addCart=state.UserApi.addCart;
     const [detailProduct,setDetailProduct]=useState([]);
     useEffect(()=>{
         if(params){
@@ -36,7 +37,7 @@ export const DetailProduct = () => {
                 <p>{detailProduct.description}</p>
                 <p>{detailProduct.content}</p>
                 <p>Sold: {detailProduct.sold}</p>
-                <Link to='/cart' className='cart'>Add to Cart</Link>
+                <Link to='/cart' className='cart' onClick={() => addCart({product:detailProduct})}>Add to Cart</Link>
             </div>  
         </div>
     </>

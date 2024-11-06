@@ -24,9 +24,9 @@ export const UserApi = (token) => {
     const addCart=async({product})=>{
         if(!isLogged) return alert("Please Login ")
         
-        
-        const {_id}=await product;
         console.log(product)
+        const {_id}=await product;
+        // console.log(product)
         const check=cart.every(item=> item._id!==_id)
         // cart.every(item=> console.log(item))
         if(check){
@@ -36,7 +36,7 @@ export const UserApi = (token) => {
         else{
             alert("This product has been already added to Cart");
         }
-        console.log(cart);
+        // console.log(cart);
     }
     
   return ({
