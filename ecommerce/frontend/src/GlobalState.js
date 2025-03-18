@@ -10,7 +10,6 @@ export const DataProvider=({children})=>{
         try{
             const res=await axios.post('/user/refresh_token');
             console.log(res); 
-
             setToken(res.data.rf_token); 
         }
          catch(err){
