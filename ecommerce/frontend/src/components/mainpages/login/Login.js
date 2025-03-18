@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { GlobalState } from '../../../GlobalState';
+import { ActivityTypes, trackActivity } from '../utils/tracker';
 
 export const Login = () => {
   
@@ -21,6 +22,7 @@ export const Login = () => {
     try {
       console.log("try");
       await axios.post('user/login', { ...user });
+      trackActivity(ActivityTypes.LOGIN);
       localStorage.setItem('firstLogin', true);
       window.location.href = '/';
     } catch (err) {

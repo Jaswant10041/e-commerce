@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import { ActivityTypes, trackActivity } from '../components/mainpages/utils/tracker';
 
 export const UserApi = (token) => {
     const [isLogged,setIsLogged]=useState(false);
@@ -31,6 +32,7 @@ export const UserApi = (token) => {
         // cart.every(item=> console.log(item))
         if(check){
             setCart([...cart,{...product,quantity:1}]);
+            trackActivity(ActivityTypes.ADD_TO_CART, _id);
             
         }
         else{

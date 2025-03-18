@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { GlobalState } from '../../../../GlobalState';
 import { Link } from 'react-router-dom';
+import { ActivityTypes, trackActivity } from '../tracker';
 
 export const DetailProduct = () => {
     const params = useParams();
@@ -19,7 +20,15 @@ export const DetailProduct = () => {
             });
         }
     }, [params, products]);
-
+    useEffect(() => {
+        trackActivity(ActivityTypes.PRODUCT_VIEW, detailProduct._id);
+        
+        const startTime = Date.now();
+        return () => {
+          const duration = Date.now() - startTime;
+          trackActivity(ActivityTypes.PRODUCT_VIEW, detailProduct._id);
+        };
+      }, [detailProduct._id]);
     if (detailProduct.length === 0) {
         return null;
     }
