@@ -4,6 +4,7 @@ import { GlobalState } from '../../../../GlobalState';
 import { Link } from 'react-router-dom';
 import { ActivityTypes, trackActivity } from '../tracker';
 
+
 export const DetailProduct = () => {
     const params = useParams();
     const state = useContext(GlobalState);
@@ -12,23 +13,15 @@ export const DetailProduct = () => {
     const [detailProduct, setDetailProduct] = useState([]);
 
     useEffect(() => {
-        if (params) {
+        if (params.id) {
             products.forEach(product => {
-                if (product._id === params.id) {
-                    setDetailProduct(product);
-                }
+              if (product._id === params.id) {
+                setDetailProduct(product);
+                trackActivity(ActivityTypes.PRODUCT_VIEW, product._id);
+              }
             });
-        }
+          }
     }, [params, products]);
-    useEffect(() => {
-        trackActivity(ActivityTypes.PRODUCT_VIEW, detailProduct._id);
-        
-        const startTime = Date.now();
-        return () => {
-          const duration = Date.now() - startTime;
-          trackActivity(ActivityTypes.PRODUCT_VIEW, detailProduct._id);
-        };
-      }, [detailProduct._id]);
     if (detailProduct.length === 0) {
         return null;
     }

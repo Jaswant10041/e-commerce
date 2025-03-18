@@ -4,6 +4,7 @@ import axios from 'axios';
 import { GlobalState } from '../../../GlobalState';
 import { ActivityTypes, trackActivity } from '../utils/tracker';
 
+
 export const Login = () => {
   
   const [user, setUser] = useState({
@@ -20,7 +21,6 @@ export const Login = () => {
   const loginSubmit = async (e) => {
     e.preventDefault();
     try {
-      console.log("try");
       await axios.post('user/login', { ...user });
       trackActivity(ActivityTypes.LOGIN);
       localStorage.setItem('firstLogin', true);

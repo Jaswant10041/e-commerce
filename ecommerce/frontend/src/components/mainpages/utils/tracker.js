@@ -31,7 +31,7 @@ const getStoredActivities = () => {
   return stored ? JSON.parse(stored) : [];
 };
 
-export const trackActivity = (type, productId = null) => {
+export const trackActivity = (type, productId = null, user = null) => {
   const activities = getStoredActivities();
   activities.push({
     type,
@@ -51,6 +51,11 @@ const flushActivities = async (user) => {
       activities,
       userId: user?._id,
       email: user?.email
+    }, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      }
     });
     localStorage.removeItem(ACTIVITY_BUFFER_KEY);
   } catch (error) {
@@ -58,7 +63,7 @@ const flushActivities = async (user) => {
   }
 };
 
-// Initialize automatic flushing
+// Auto-flush every 5 minutes
 setInterval(() => {
   const user = JSON.parse(localStorage.getItem('user')) || null;
   flushActivities(user);

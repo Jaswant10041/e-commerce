@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { BtnRender } from './BtnRender';
 import { ActivityTypes, trackActivity } from '../tracker';
 
+
 export const ProductList = ({ product, isAdmin }) => {
   const [flag, setFlag] = useState(false);
 
@@ -14,17 +15,17 @@ export const ProductList = ({ product, isAdmin }) => {
     }
   };
 
-  useEffect(() => {
-    // Track product view when component mounts
-    trackActivity(ActivityTypes.PRODUCT_VIEW, product._id);
-    
-    // Track time spent viewing
-    const startTime = Date.now();
-    return () => {
-      const duration = Date.now() - startTime;
-      trackActivity(ActivityTypes.PRODUCT_VIEW, product._id);
-    };
-  }, [product._id]);
+  // useEffect(() => {
+  //   // Track product view when component mounts
+  //   trackActivity(ActivityTypes.PRODUCT_VIEW, product._id);
+
+  //   // Track time spent viewing
+  //   const startTime = Date.now();
+  //   return () => {
+  //     const duration = Date.now() - startTime;
+  //     trackActivity(ActivityTypes.PRODUCT_VIEW, product._id);
+  //   };
+  // }, [product._id]);
   return (
     <div className="product_list flex flex-col h-full justify-between border border-gray-200 rounded-lg shadow-lg p-4 bg-white">
       {/* Admin Checkbox */}

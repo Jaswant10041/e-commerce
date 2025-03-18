@@ -110,15 +110,3 @@ const userCtrl={
 }
 
 module.exports=userCtrl;
-// try{
-        //     const {name,email,password}=req.body;
-        //     const user=await Users.findOne({email});
-        //     if(user) return res.status(400).json({msg:"Email Already Registered"})
-        //     if(password.length<6){
-        //         return res.status(400).json({msg:"Password should be atleast 6 characters"})
-        //     }
-        //     return res.json({msg:"Registered Successfully"})
-        // }
-        // catch(err){
-        //     return res.status(500).json({msg:err.message});
-        // }

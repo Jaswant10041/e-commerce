@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { ActivityTypes, trackActivity } from '../utils/tracker';
 
+
 export const Register = () => {
   const [user, setUser] = useState({
     name: '',
@@ -26,9 +27,9 @@ export const Register = () => {
     e.preventDefault();
     try {
       await axios.post('user/register', { ...user });
+      trackActivity(ActivityTypes.REGISTER);
       localStorage.setItem('firstRegister', true);
       localStorage.setItem('firstLogin', true);
-      trackActivity(ActivityTypes.REGISTER);
       window.location.href = '/';
     } catch (err) {
       alert(err.response.data.msg);
